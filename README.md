@@ -1,43 +1,66 @@
-# MeteoAPI
-Verzija 1.0.1
-## Requirements
+#  MeteoAPI
 
-- `flask`
-- `sqlalchemy`
-- `flask-cors`
-- `connexion`
-- `openalchemy`
-- `psycopg2-binary`
-- `sqlalchemy-utils`
-- `flask-sqlalchemy`
-- `connexion[flask]`
-- `connexion[uvicorn]`
-- `connexion[swagger-ui]` 
+REST API za meteorološke podatke - merenja, lokacije, varijable i izvori. Flask + PostgreSQL + Swagger.
 
-Verzija 1.0.0
-Dodat swagger (docker-compose.yaml)     
-Dodata metoda POST za Location (meteoapi.yaml, api.py)     
 
-Verzija 1.0.1
-Dodata povezanost tabela Measurement i Variable (meteoapi.yaml, api.py) &#128526;     
-Dodata metoda POST za Variable (meteoapi.yaml, api.py)     
-Izbačen volumes za bazu podataka (docker-compose.yaml)     
 
-Verzija 1.0.2
-Dodata metoda GET za Variable (meteoapi.yaml, api.py)  
-Dodata povezanost tabela Measurement i Location (meteoapi.yaml, api.py) 
-Dodata povezanost tabela Measurement i Source (meteoapi.yaml, api.py)
+##  Pokretanje
 
-```
-import flask
-
+### Docker (preporučeno)
+```bash
+docker compose up --build
 ```
 
+### Lokalno
+```bash
+pip install -r requirements.txt
+cd src
+python app.py
+```
 
+---
 
+##  URL-ovi
 
+| Servis | URL |
+|--------|-----|
+| API | `http://localhost:5001` |
+| PostgreSQL | `localhost:5432` |
 
+**DB kredencijali:** `meteoapi` / `meteoapi123`
 
+---
 
+##  API Endpoints
 
+- `GET /api/measurements` - Sve meritve
+- `GET /api/variable` - Sve varijable
+- `GET /api/location` - Sve lokacije
+- `GET /api/source` - Svi izvori
+
+Kompletan opis na Swagger UI: `http://localhost:5001/api/ui/`
+
+---
+
+##  Zavisnosti
+
+```
+flask, connexion, flask-sqlalchemy, sqlalchemy, openalchemy, psycopg2-binary, flask-cors
+```
+
+Vidi `requirements.txt` za sve zavisnosti.
+
+---
+
+##  Struktura projekta
+
+```
+src/
+├── app.py           # Glavna aplikacija
+├── api.py           # API operacije
+├── database.py      # DB konfiguracija
+├── models.py        # Modeli (auto-generisano)
+├── meteoapi.yaml    # OpenAPI specifikacija
+└── swagger.py       # Swagger UI
+```
 
