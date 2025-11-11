@@ -2,11 +2,11 @@ import connexion # type: ignore
 from flask import redirect # type: ignore
 
 app = connexion.App(__name__, specification_dir='.')
-app.add_api('meteoapi.yaml', arguments = {'title': 'MeteoAPI'})
+app.add_api('meteoapi.yaml', arguments={'title': 'MeteoAPI'}, swagger_ui=True)
 
 @app.route('/')
 def home():
-    return redirect("/ui")
+    return redirect("/api/ui/")
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5001)

@@ -4,7 +4,7 @@ info:
   description: Aplikacija koja se bavi smeštanjem meteoroloških podataka u bazu podataka.
   version: 1.0.0
 servers:
-  - url: http://localhost:5000/api
+  - url: http://localhost:5001/api
 tags:
   - name: Measurement
     description: Meteorološka promenljiva
